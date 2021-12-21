@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"> 
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+  
+<style>
+*{
+	box-sizing:border-box;
+	padding:0;
+	margin:0;
+	
+}
+.mainDiv{
+	width:100%;
+	height:100vh;
+	position:relative;
+	background-color:#3498db;
+}
+.centerDiv{
+	width:100%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	text-align:center;
+}
+
+h1{
+	 font-family: 'Tangerine', serif;
+	text-transform:capitalize;
+	margin-bottom:30px;
+	color:#ecf0f1;
+	text-shadow:1px 2px 3px #2988b9;
+	font-size:4rem;
+	animation:animate__fadeOut 20s linear infinite;
+	animation-direction:alternate;
+}
+@keyframes animate__fadeOut{
+	from{transform:translateX(-20px) ;
+	}
+	to{transform:translateX(20px) ;
+	 font-family: 'Tangerine', serif;
+	}
+
+}
+h2{
+	font-family: 'Josefin Sans', sans-serif;
+	 font-size:2rem;
+	text-align:center;
+}
+textarea{
+	width:80%;
+	background-color:#444;
+	box-shadow:0 0 1px rgba(0,0,0,0.5);
+	border-radius:10px 10px 0 0;
+	border:20px solid $34495e;
+	color:white;
+	font-size:1.3rem;
+}
+.mainbtn{
+	margin-top:2%;
+	padding:10px 20px;
+	border-radius:20px;
+	border:5px solid #2980b9;
+	background:#ecf0f1;
+	font-size:1rem;
+}
+ @media (max-width: 524px) {
+	.centerDiv{
+		width:100%;
+		box-sizing:border-box;
+	}
+	#mywords {
+		margin-top:auto;
+		width:100%;
+		display:flex;
+		box-sizing:border-box;
+	}
+	.about34{
+		margin-top:5%;
+		font-size:40px;
+	}
+	.mainbtn{
+		margin-top:-5%;
+	}
+		
+ }
+</style>
+</head>
+
+<body>
+<div class="mainDiv col-lg-12 col-md-12 col-sm-12">
+<div class="centerDiv">
+<b><h1 class="animate__animated  animate__fadeOut about34">Welcome To Typing Speed Test</h1></b>
+<hr />
+<h2 id="msg"></h2><br />
+<textarea id="mywords" cols="100" rows="10" placeholder="Check your typing speed"></textarea><br />
+<button id="btn" class="mainbtn">Start</button>
+</div></div>
+<script>
+const setofwords=["“Don't let what you cannot do interfere with what you can do.” – John Wooden","“Successful and unsuccessful people do not vary greatly in their abilities.","“There are no shortcuts to any place worth going.” – Beverly Sills."," “Failure is the opportunity to begin again more intelligently.” – Henry Ford"];
+const msg=document.getElementById('msg');
+const typeWords=document.getElementById('mywords');
+const btn=document.getElementById('btn');
+ let startTime,endTime;
+
+	console.log(this);
+	const playGame=()=>
+	{
+		let randomnumber=Math.floor(Math.random()*setofwords.length);
+	msg.innerText=setofwords[ randomnumber];
+	let date=new Date();
+	startTime=date.getTime();
+	btn.innerText="Done";
+	}
+	const endPlay=()=>{
+		let date=new Date();
+	endTime=date.getTime();
+	let totalTime=((endTime-startTime)/1000);
+	console.log( totalTime);
+	let totalStr=typeWords.value;
+	let wordCount=wordCounter(totalStr);
+	let speed=Math.round(( wordCount/totalTime)*60);
+	let finalMsg="You typed total at"+speed+"words per minutes";
+	finalMsg +=compareWords(msg.innerText,totalStr);
+	msg.innerText=finalMsg;
+	}
+	const compareWords =(str1,str2)=>{
+		let words1=str1.split(" ");
+		let words2=str2.split(" ");
+		let cnt=0;
+		words1.forEach(function(item,index){
+			if(item==words2[index]){
+				cnt++;
+			}
+		})
+		let errorWords=(words1.length-cnt);
+		return(cnt+"correct out of"+words1.length+"words and the total number of error are"+errorWords+".");
+	}
+	const wordCounter=(str)=>{
+		let response=str.split(" ").length;
+		console.log(response);
+		return response;
+	}
+	btn.addEventListener('click',function(){
+	if(this.innerText=='Start'){
+		typeWords.disabled=false;
+		playGame();
+	}
+	else if(this.innerText=="Done"){
+		typeWords.disabled=true;
+		btn.innerText="Start";
+		endPlay();
+	}
+})
+</script>
+</body>
+</html>

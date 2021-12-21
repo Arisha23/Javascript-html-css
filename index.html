@@ -1,0 +1,163 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+ <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine"> 
+<style>
+*{
+	margin:0;
+	padding:0;
+	 
+}
+section{
+	height:100vh;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	background-color:#82ccdd;
+}
+section h1{
+	 font-family: 'Tangerine', serif;
+	text-transform:capitalize;
+	padding-bottom:30px;
+	font-size:5rem;
+	text-shadow:1px 1px 2px white;
+	animation:animate__fadeOut 20s linear infinite;
+	animation-direction:alternate;
+}
+@keyframes animate__fadeOut{
+	from{transform:translateX(-20px) ;
+	}
+	to{transform:translateX(20px) ;
+	}
+}
+.centerdiv{
+	width:500px;
+	height:400px;
+	background-color:#78e08f;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+.insertbox{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100px;
+}
+#v1,#v2{
+	text-align:center;
+	padding:15px 7px ;
+	width:80px;
+	font-size:30px;
+	box-shadow:1px 1px 0px #999,2px 2px 0px #999,3px 3px 0px #999,4px 4px 0px #999,5px 5px 0px #999,6px 6px 0px #999;
+	color:black;
+}
+.box1 p{
+	font-size:60px;
+	margin:0 8px 0 13px;
+}
+.middlebox #answ{
+	margin:30px 0;
+	padding:5px 0;
+	font-size:30px;
+	text-align:center;
+	width:180px;
+}
+.sendbox button{
+	padding:10px 20px;
+	font-size:0.8rem;
+	text-transform:uppercase;
+	color:white;
+	border:none;
+	background-color:#079992;
+	border-bottom-left-radius:25px;
+	border-bottom-right-radius:25px;
+}
+ @media (max-width:326px) {
+	 h1{
+		 font-size:12px;
+		 box-sizing:border-box;
+	 }
+ }
+</style>
+</head>
+
+<body>
+<section>
+<b><h1 class="animate__animated  animate__fadeOut">Math Addition Quiz Game:)</h1></b>
+<div class="centerdiv">
+<div class="insertbox">
+<div class="box1">
+<input type="text" id="v1" />
+</div>
+<div class="box1">
+<p>+</p>
+</div>
+<div class="box1">
+<input type="text" id="v2" />
+</div>
+</div>
+<div class="middlebox">
+<input type="text" id="answ">
+</div>
+<div class="sendbox">
+<button onClick="jsGame()">Check Answer</button>
+</div>
+</div></section>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5f03c31b760b2b560e6fdc3c/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<script>
+let n1 = Math.floor(Math.random()*10+1);
+let n2 = Math.floor(Math.random()*10+1);
+document.getElementById('v1').value=n1;
+document.getElementById('v2').value=n2;
+let ans=n1+n2;
+const jsGame=()=>{
+	var usera=document.getElementById('answ').value;
+	if(usera==ans){
+		alert("WELL DONE!!your Answer is correct...")
+	}
+	else{
+		alert("Correct answer is"+ans+".Try Again.");
+	}
+	document.getElementById('answ').value="";
+	 n1 = Math.floor(Math.random()*10+1);
+ n2 = Math.floor(Math.random()*10+1);
+document.getElementById('v1').value=n1;
+document.getElementById('v2').value=n2;
+ ans=n1+n2;	
+}
+
+
+</script>
+</body>
+</html>
